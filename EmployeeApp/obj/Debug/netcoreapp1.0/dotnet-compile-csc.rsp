@@ -7,8 +7,8 @@
 -debug:full
 -nostdlib
 -nologo
-"c:\users\travis.layne\documents\visual studio 2015\Projects\EmployeeApp\obj\Debug\netcoreapp1.0\dotnet-compile.assemblyinfo.cs"
--out:"c:\users\travis.layne\documents\visual studio 2015\Projects\EmployeeApp\bin\Debug\netcoreapp1.0\EmployeeApp.dll"
+"C:\Users\travis.layne\Documents\Visual Studio 2015\Projects\CoreApp\EmployeeApp\obj\Debug\netcoreapp1.0\dotnet-compile.assemblyinfo.cs"
+-out:"C:\Users\travis.layne\Documents\Visual Studio 2015\Projects\CoreApp\EmployeeApp\bin\Debug\netcoreapp1.0\EmployeeApp.dll"
 -r:"C:\Users\travis.layne\.nuget\packages\Microsoft.ApplicationInsights\2.1.0\lib\dotnet5.4\Microsoft.ApplicationInsights.dll"
 -r:"C:\Users\travis.layne\.nuget\packages\Microsoft.ApplicationInsights.AspNetCore\1.0.0\lib\netstandard1.6\Microsoft.ApplicationInsights.AspNetCore.dll"
 -r:"C:\Users\travis.layne\.nuget\packages\Microsoft.AspNetCore.Antiforgery\1.0.1\lib\netstandard1.3\Microsoft.AspNetCore.Antiforgery.dll"
@@ -170,11 +170,11 @@
 -r:"C:\Users\travis.layne\.nuget\packages\System.Threading.Timer\4.0.1\ref\netstandard1.2\System.Threading.Timer.dll"
 -r:"C:\Users\travis.layne\.nuget\packages\System.Xml.ReaderWriter\4.0.11\ref\netstandard1.3\System.Xml.ReaderWriter.dll"
 -r:"C:\Users\travis.layne\.nuget\packages\System.Xml.XDocument\4.0.11\ref\netstandard1.3\System.Xml.XDocument.dll"
--resource:"c:\users\travis.layne\documents\visual studio 2015\Projects\EmployeeApp\obj\Debug\netcoreapp1.0\EmployeeAppdotnet-compile.deps.json",EmployeeApp.deps.json
-"c:\users\travis.layne\documents\visual studio 2015\Projects\EmployeeApp\Program.cs"
-"c:\users\travis.layne\documents\visual studio 2015\Projects\EmployeeApp\Startup.cs"
-"c:\users\travis.layne\documents\visual studio 2015\Projects\EmployeeApp\Controllers\MainController.cs"
-"c:\users\travis.layne\documents\visual studio 2015\Projects\EmployeeApp\Models\Employee.cs"
-"c:\users\travis.layne\documents\visual studio 2015\Projects\EmployeeApp\Models\TimeCard.cs"
-"c:\users\travis.layne\documents\visual studio 2015\Projects\EmployeeApp\Services\EmployeeRepository.cs"
-"c:\users\travis.layne\documents\visual studio 2015\Projects\EmployeeApp\Services\TimeCardRepository.cs"
+-resource:"C:\Users\travis.layne\Documents\Visual Studio 2015\Projects\CoreApp\EmployeeApp\obj\Debug\netcoreapp1.0\EmployeeAppdotnet-compile.deps.json",EmployeeApp.deps.json
+"C:\Users\travis.layne\Documents\Visual Studio 2015\Projects\CoreApp\EmployeeApp\Program.cs"
+"C:\Users\travis.layne\Documents\Visual Studio 2015\Projects\CoreApp\EmployeeApp\Startup.cs"
+"C:\Users\travis.layne\Documents\Visual Studio 2015\Projects\CoreApp\EmployeeApp\Controllers\MainController.cs"
+"C:\Users\travis.layne\Documents\Visual Studio 2015\Projects\CoreApp\EmployeeApp\Models\Employee.cs"
+"C:\Users\travis.layne\Documents\Visual Studio 2015\Projects\CoreApp\EmployeeApp\Models\TimeCard.cs"
+"C:\Users\travis.layne\Documents\Visual Studio 2015\Projects\CoreApp\EmployeeApp\Services\EmployeeRepository.cs"
+"C:\Users\travis.layne\Documents\Visual Studio 2015\Projects\CoreApp\EmployeeApp\Services\TimeCardRepository.cs"
