@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using TestApp.Services;
 using TestApp.Models;
+using Microsoft.AspNetCore.Http;
 
 namespace BasicApi.Controllers
 {
@@ -13,6 +14,8 @@ namespace BasicApi.Controllers
     {
         private EmployeeRepository EmployeeRepository { get; }
         private TimeCardRepository TimeCardRepository { get; }
+        //private TimeCard[] TimeCards;
+        //private Employee[] Employees;
         public MainController()
         {
             this.EmployeeRepository = new EmployeeRepository();
@@ -47,6 +50,7 @@ namespace BasicApi.Controllers
         public Employee Post([FromBody]Employee value)
         {
             //return this.EmployeeRepository.AddEmployee(value);
+            value.Id = new Guid().ToString();
             return value;
         }
 

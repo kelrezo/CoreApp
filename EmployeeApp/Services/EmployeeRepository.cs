@@ -10,8 +10,10 @@ namespace TestApp.Services
     {
         private const string CacheKey = "EntityStorage";
         List<Employee> Employees { get; set; }
+        static private Dictionary<string,Employee> dict;
         public EmployeeRepository()
         {
+            dict = new Dictionary<string, Employee>();
            
             //var ctx = HttpContext;
 
@@ -36,15 +38,16 @@ namespace TestApp.Services
         //    return  ((Employee[])ctx.Cache[CacheKey]).ToArray();
         //}
 
-        //public Employee AddEmployee(Employee person)
-        //{
-        //    var ctx = HttpContext.Current;
-        //    var currentData = ((Employee[])ctx.Cache[CacheKey]).ToList();
-        //    person.Id = Guid.NewGuid().ToString();
-        //    currentData.Add(person);
-        //    ctx.Cache[CacheKey] = currentData.ToArray();
-        //    return person;           
-        //}
+        public Employee AddEmployee(Employee person)
+        {
+            //var ctx = HttpContext.Current;
+            //var currentData = ((Employee[])ctx.Cache[CacheKey]).ToList();
+            person.Id = Guid.NewGuid().ToString();
+            //currentData.Add(person);
+            //ctx.Cache[CacheKey] = currentData.ToArray();
+            dict[person.Id] = person;
+            return person;
+        }
         //public void RemoveEmployee(string id)
         //{
         //    var ctx = HttpContext.Current;
