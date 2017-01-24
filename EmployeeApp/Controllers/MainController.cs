@@ -25,56 +25,55 @@ namespace BasicApi.Controllers
             return employeeRepository.GetAllEmployees();
         }
 
-        //[HttpGet, Route("{id}")]
-        //public Employee Get(string id)
-        //{
-        //    return this.EmployeeRepository.GetEmployee(id);
-        //}
+        [HttpGet, Route("{id}")]
+        public Employee Get(string id)
+        {
+            return employeeRepository.GetEmployee(id);
+        }
 
-        //[HttpPut, Route("{id}")]
-        //public void Put(string id, [FromBody]Employee person)
-        //{
-        //    person.Id = id;
-        //    this.EmployeeRepository.UpdateEmployee(person);
-        //}
+        [HttpPut, Route("{id}")]
+        public void Put(string id, [FromBody]Employee person)
+        {
+            person.Id = id;
+            employeeRepository.UpdateEmployee(person);
+        }
 
         [HttpPost, Route("")]
         public Employee Post([FromBody]Employee value)
         {
             return employeeRepository.AddEmployee(value);
-
-            //return value;
         }
 
-        //[HttpDelete, Route("{id}")]
-        //public void Delete(string id)
-        //{
-        //    this.TimeCardRepository.RemoveTimeCards(id);
-        //    this.EmployeeRepository.RemoveEmployee(id);
-        //}
-        //[HttpPost, Route("{id}/time")]
-        //public TimeCard PostCard([FromBody] TimeCard time, string id)
-        //{
-        //    //var ctx = HttpContext.Current;
-        //    //var data = ctx.Request;
-        //    Employee worker = Get(id);
-        //    if (worker.Active)
-        //    {
-        //        time.Id = id;
-        //        //time.Date = ctx.Timestamp;
-        //        this.TimeCardRepository.AddTimeCard(time);
-        //    }
-        //    return time;
-        //}
-        //[HttpGet, Route("{id}/time")]
-        //public TimeCard[] GetCard(string id)
-        //{
-        //    return this.TimeCardRepository.GetTimeCards(id);
-        //}
-        //[HttpGet, Route("time")]
-        //public TimeCard[] GetCards()
-        //{
-        //    return this.TimeCardRepository.GetTimeCards();
-        //}
+        [HttpDelete, Route("{id}")]
+        public void Delete(string id)
+        {
+            timeCardRepository.RemoveTimeCards(id);
+            employeeRepository.RemoveEmployee(id);
+        }
+
+        [HttpPost, Route("{id}/time")]
+        public TimeCard PostCard([FromBody] TimeCard time, string id)
+        {
+            Employee worker = Get(id);
+            if (worker.Active)
+            {
+                time.Id = id; 
+                time.Date = DateTime.UtcNow;
+                timeCardRepository.AddTimeCard(time);
+            }
+            return time;
+        }
+
+        [HttpGet, Route("{id}/time")]
+        public TimeCard[] GetCard(string id)
+        {
+            return timeCardRepository.GetTimeCards(id);
+        }
+
+        [HttpGet, Route("time")]
+        public TimeCard[] GetCards()
+        {
+            return timeCardRepository.GetTimeCards();
+        }
     }
 }

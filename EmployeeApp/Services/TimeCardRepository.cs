@@ -8,7 +8,6 @@ namespace TestApp.Services
 {
     public class TimeCardRepository
     {
-        static private Dictionary<string, TimeCard> dict { get; set; }
         static private List<TimeCard> TimeCards { get; set; }
         public TimeCardRepository()
         {
