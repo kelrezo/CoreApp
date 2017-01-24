@@ -12,25 +12,17 @@ namespace BasicApi.Controllers
     [Route("employees")]
     public class MainController : Controller
     {
-        private EmployeeRepository EmployeeRepository { get; }
-        private TimeCardRepository TimeCardRepository { get; }
-        //private TimeCard[] TimeCards;
-        //private Employee[] Employees;
+        private static EmployeeRepository employeeRepository = new EmployeeRepository();
+        private static TimeCardRepository timeCardRepository = new TimeCardRepository();
         public MainController()
         {
-            this.EmployeeRepository = new EmployeeRepository();
-            this.TimeCardRepository = new TimeCardRepository();
+                  
         }
 
-        //[HttpGet, Route("")]
-        //public Employee[] GetAll()
-        //{
-        //    return this.EmployeeRepository.GetAllEmployees();
-        //}
         [HttpGet, Route("")]
-        public string GetAll()
+        public Employee[] GetAll()
         {
-            return "Hello word";
+            return employeeRepository.GetAllEmployees();
         }
 
         //[HttpGet, Route("{id}")]
@@ -49,9 +41,9 @@ namespace BasicApi.Controllers
         [HttpPost, Route("")]
         public Employee Post([FromBody]Employee value)
         {
-            //return this.EmployeeRepository.AddEmployee(value);
-            value.Id = new Guid().ToString();
-            return value;
+            return employeeRepository.AddEmployee(value);
+
+            //return value;
         }
 
         //[HttpDelete, Route("{id}")]
