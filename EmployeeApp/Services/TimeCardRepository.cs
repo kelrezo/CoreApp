@@ -28,7 +28,7 @@ namespace TestApp.Services
         }
         public void RemoveTimeCards(string id)
         {
-            TimeCards.RemoveAll(x => x.Id == id);         
+                TimeCards.RemoveAll(x => x.Id == id);      
         }
     }
 }

@@ -26,17 +26,21 @@ namespace TestApp.Services
             dict[person.Id] = person;
             return person;
         }
-        public void RemoveEmployee(string id)
+        public bool RemoveEmployee(string id)
         {
-            dict.Remove(id);          
+            var check = dict.ContainsKey(id);
+            if (check)
+                dict.Remove(id);
+            return check;        
         }
         public Employee GetEmployee(string id)
-        {
-            return dict[id];
+        {        
+            return dict.ContainsKey(id) ? dict[id] : null;        
         }
         public void UpdateEmployee(Employee update)
         {
-            dict[update.Id] = update;
+            if (dict.ContainsKey(update.Id))
+                dict[update.Id] = update;            
         }
     }
 }

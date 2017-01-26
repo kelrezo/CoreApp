@@ -28,7 +28,13 @@ namespace BasicApi.Controllers
         [HttpGet, Route("{id}")]
         public Employee Get(string id)
         {
-            return employeeRepository.GetEmployee(id);
+           var worker = employeeRepository.GetEmployee(id);
+            if (worker == null)
+            {
+                var x = HttpContext.Response;
+                x.StatusCode = 404;
+            }
+            return worker;
         }
 
         [HttpPut, Route("{id}")]
@@ -45,10 +51,16 @@ namespace BasicApi.Controllers
         }
 
         [HttpDelete, Route("{id}")]
-        public void Delete(string id)
+        public string Delete(string id)
         {
             timeCardRepository.RemoveTimeCards(id);
-            employeeRepository.RemoveEmployee(id);
+            if (!employeeRepository.RemoveEmployee(id))
+            {
+                var x = HttpContext.Response;
+                x.StatusCode = 404;
+                //return "Employee unsuccessfully removed, employee with id: " +id";
+            }
+            return "Employee Successfully removed";
         }
 
         [HttpPost, Route("{id}/time")]
@@ -67,7 +79,13 @@ namespace BasicApi.Controllers
         [HttpGet, Route("{id}/time")]
         public TimeCard[] GetCard(string id)
         {
-            return timeCardRepository.GetTimeCards(id);
+            var timeCards = timeCardRepository.GetTimeCards(id);
+            if (timeCards == null)
+            {
+                var x = HttpContext.Response;
+                x.StatusCode = 404;
+            }
+            return timeCards;
         }
 
         [HttpGet, Route("time")]
