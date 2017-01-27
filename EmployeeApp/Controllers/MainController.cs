@@ -33,6 +33,7 @@ namespace BasicApi.Controllers
             {
                 var x = HttpContext.Response;
                 x.StatusCode = 404;
+                return null;
             }
             return worker;
         }
@@ -67,23 +68,32 @@ namespace BasicApi.Controllers
         public TimeCard PostCard([FromBody] TimeCard time, string id)
         {
             Employee worker = Get(id);
-            if (worker.Active)
+            if (worker == null)
             {
-                time.Id = id; 
-                time.Date = DateTime.UtcNow;
-                timeCardRepository.AddTimeCard(time);
+                return null;
             }
-            return time;
+            else
+            {
+               if(worker.Active)
+               {
+                   time.Id = id;
+                   time.Date = DateTime.UtcNow;
+                   timeCardRepository.AddTimeCard(time);
+                   return time;
+                }
+                return null;
+            }
         }
 
         [HttpGet, Route("{id}/time")]
         public TimeCard[] GetCard(string id)
         {
             var timeCards = timeCardRepository.GetTimeCards(id);
-            if (timeCards == null)
+            if (Get(id) == null ||  timeCards == null)
             {
                 var x = HttpContext.Response;
                 x.StatusCode = 404;
+                return null;
             }
             return timeCards;
         }
