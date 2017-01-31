@@ -14,6 +14,7 @@ namespace BasicApi.Controllers
     {
         private static EmployeeRepository employeeRepository = new EmployeeRepository();
         private static TimeCardRepository timeCardRepository = new TimeCardRepository();
+        const int pagesize = 10;
         public MainController()
         {
                   
@@ -76,8 +77,8 @@ namespace BasicApi.Controllers
             {
                if(worker.Active)
                {
-                   time.Id = id;
-                   time.Date = DateTime.UtcNow;
+                   //time.Id = id;
+                   //time.Date = DateTime.UtcNow;
                    timeCardRepository.AddTimeCard(time);
                    return time;
                 }
@@ -99,9 +100,11 @@ namespace BasicApi.Controllers
         }
 
         [HttpGet, Route("time")]
-        public TimeCard[] GetCards()
+        public TimeCard[] GetCards([FromQuery] int start)
         {
-            return timeCardRepository.GetTimeCards();
+            var card = timeCardRepository.GetTimeCards();
+            return  card.Skip(pagesize * start).Take(pagesize).ToArray();
         }
+     
     }
 }
