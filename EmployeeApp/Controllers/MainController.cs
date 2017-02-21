@@ -14,7 +14,7 @@ namespace BasicApi.Controllers
     {
         private static EmployeeRepository employeeRepository = new EmployeeRepository();
         private static TimeCardRepository timeCardRepository = new TimeCardRepository();
-        const int pagesize = 2;
+        const int pagesize = 10;
         public MainController()
         {
                   
@@ -100,10 +100,10 @@ namespace BasicApi.Controllers
         }
 
         [HttpGet, Route("time")]
-        public TimeCard[] GetCards([FromQuery] int start)
+        public TimeCard[] GetCards([FromQuery] int s,[FromQuery] int o=0)
         {
             var card = timeCardRepository.GetTimeCards();
-            return  card.Skip(pagesize * (start-1)).Take(pagesize).ToArray();
+            return  (o ==0) ? card.Skip(pagesize * (s - 1)).Take(pagesize).ToArray() : card.Skip(o * (s-1)).Take(o).ToArray();
         }
      
     }
